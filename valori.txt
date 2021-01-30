@@ -1,0 +1,57 @@
+ANB = Annette Bay
+AKU = Akutan
+
+ANG = Angoon
+
+BEL = Bellingham, WA
+
+CBY = Cold Bay
+
+CDV = Cordova
+CHB = Chenega Bay
+
+CHG = Chignik
+GUS = Gustavus
+FPS = False Pass
+
+
+HNS = Haines
+HNH = Hoonah
+
+HOM = Homer
+JNU = Juneau (Auke Bay)
+KAE = Kake
+KCV = King Cove
+KOD = Kodiak
+KTN = Ketchikan
+OLD = Old Harbor
+ORI = Port Lions
+OUZ = Ouzinkie
+PEL = Pelican
+PSG = Petersburg
+SDP = Sand Point
+SDV = Seldovia
+SGY = Skagway
+SIT = Sitka
+TAT = Tatitlek
+TKE = Tenakee
+UNA = Unalaska/Dutch Harbor
+VDZ = Valdez
+WRG = Wrangell
+WTR = Whittier
+YAK = Yakutat
+YPR = Prince Rupert, BC
+
+
+CHE = Chenega (Fast Ferry)
+LEC = LeConte
+MAL = Malaspina
+COL = Columbia
+LIT = Lituya
+MAT = Matanuska
+AUR = Aurora
+KEN = Kennicott
+TUS = Tustumena
+TAK = Taku
+FWX = Fairweather (Fast Ferry)
+
