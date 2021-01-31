@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>ports</name>
+		<description>ports | Created with https://batchgeo.com</description>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Annette Bay, Alaska</address>
+				<Point>
+					<coordinates>-131.5835026,55.1259047,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Akutan, Alaska</address>
+				<Point>
+					<coordinates>-165.7730556,54.1355556,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Angoon, Alaska</address>
+				<Point>
+					<coordinates>-134.5838889,57.5033333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Bellingham, Washington</address>
+				<Point>
+					<coordinates>-122.4786854,48.7519112,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Cold Bay, Alaska</address>
+				<Point>
+					<coordinates>-162.7183867,55.204498,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Cordova, Alaska</address>
+				<Point>
+					<coordinates>-145.7525414,60.5424087,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Chenega Bay, Alaska</address>
+				<Point>
+					<coordinates>-147.9448419,60.1003059,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Chignik, Alaska</address>
+				<Point>
+					<coordinates>-158.4022222,56.2952778,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Gustavus, Alaska</address>
+				<Point>
+					<coordinates>-135.7369443,58.4133333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> False Pass, Alaska</address>
+				<Point>
+					<coordinates>-163.415,54.8508333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Haines, Alaska</address>
+				<Point>
+					<coordinates>-135.445,59.2358333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Hoonah, Alaska</address>
+				<Point>
+					<coordinates>-135.4436111,58.11,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Homer, Alaska</address>
+				<Point>
+					<coordinates>-151.5483333,59.6425,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Juneau (Auke Bay), Alaska</address>
+				<Point>
+					<coordinates>-134.6583071,58.3950682,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Kake, Alaska</address>
+				<Point>
+					<coordinates>-133.9472222,56.9758333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> King Cove, Alaska</address>
+				<Point>
+					<coordinates>-162.3102777,55.0616667,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Kodiak, Alaska</address>
+				<Point>
+					<coordinates>-152.4072221,57.79,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Ketchikan, Alaska</address>
+				<Point>
+					<coordinates>-131.6461112,55.3422222,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Old Harbor, Alaska</address>
+				<Point>
+					<coordinates>-153.3038889,57.2027778,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Port Lions, Alaska</address>
+				<Point>
+					<coordinates>-152.8822222,57.8675,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Ouzinkie, Alaska</address>
+				<Point>
+					<coordinates>-152.5022222,57.9236111,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Pelican, Alaska</address>
+				<Point>
+					<coordinates>-136.2275,57.9608333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Petersburg, Alaska</address>
+				<Point>
+					<coordinates>-132.9555556,56.8125,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Sand Point, Alaska</address>
+				<Point>
+					<coordinates>-160.4972222,55.3397222,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Seldovia, Alaska</address>
+				<Point>
+					<coordinates>-151.7113889,59.4380556,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Skagway, Alaska</address>
+				<Point>
+					<coordinates>-135.315279,59.4554025,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Sitka, Alaska</address>
+				<Point>
+					<coordinates>-135.33,57.0530556,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Tatitlek, Alaska</address>
+				<Point>
+					<coordinates>-146.6774403,60.8671301,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Tenakee, Alaska</address>
+				<Point>
+					<coordinates>-135.218889,57.7808333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Unalaska/Dutch Harbor, Alaska</address>
+				<Point>
+					<coordinates>-166.5400929,53.8945552,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Valdez, Alaska</address>
+				<Point>
+					<coordinates>-146.3483334,61.1308333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Wrangell, Alaska</address>
+				<Point>
+					<coordinates>-132.3766666,56.4708333,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Whittier, Alaska</address>
+				<Point>
+					<coordinates>-148.6838888,60.7730556,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Yakutat, Alaska</address>
+				<Point>
+					<coordinates>-139.7272808,59.5469878,0</coordinates>
+				</Point>
+			</Placemark>
+					<Placemark>
+				<styleUrl>#0</styleUrl>
+								<ExtendedData>
+									</ExtendedData>
+								<address> Prince Rupert, British  Columbia</address>
+				<Point>
+					<coordinates>-130.3208187,54.3150367,0</coordinates>
+				</Point>
+			</Placemark>
+		<Style id="0"><IconStyle><scale>1</scale><Icon><href>https://batchgeo.com/images/icons/red_shadow_Marker.png</href></Icon><hotSpot x=".3" y=".8" xunits="fraction" yunits="fraction" /></IconStyle><LabelStyle><scale>0</scale></LabelStyle></Style>	</Document>
+</kml>

@@ -23,17 +23,17 @@
 	var startLat = unpack(rows, 'start_lat');
 	var endLat = unpack(rows, 'end_lat');
 
-	for ( var i = 0 ; i < count.length; i++ ) {
+	for ( var i = 0 ; i < 3 /*count.length*/; i++ ) {
 		var opacityValue = count[i]/getMaxOfArray(count);
 
 		var result = {
-			type: 'scattergeo',
+			type: 'scattermapbox',
 			locationmode: 'USA-states',
 			lon: [ startLongitude[i] , endLongitude[i] ],
 			lat: [ startLat[i] , endLat[i] ],
 			mode: 'lines',
 			line: {
-				width: 1,
+				width: 2,
 				color: 'red'
 			},
 			opacity: opacityValue
@@ -44,17 +44,32 @@
 
 	var layout = {
 		title: 'Feb. 2011 American Airline flight paths',
+		width: 1000,
+		height: 1000,
 		showlegend: false,
-		geo:{
-			scope: 'alaska, united states',
-			projection: {
-				type: 'azimuthal equal area'
-			},
-			showland: true,
-			landcolor: 'rgb(243,243,243)',
-			countrycolor: 'rgb(204,204,204)'
-		}
-	};
+
+		dragmode: "zoom",
+			mapbox: { style: "open-street-map", center: { lat: 38, lon: -90 }, zoom: 3 },
+			margin: { r: 0, t: 0, b: 0, l: 0 }
+		};
+
+//		geo:{
+//			/*scope: 'AK',*/
+//			resolution: 150,
+//			projection: {
+//				type: 'Transverse mercator' /*'azimuthal equal area'*/
+//			},
+//			showcoastllines: true,
+//			showlakes: true,
+//			showrivers: true,
+//			showland: true,
+//			landcolor: 'rgb(243,243,243)',
+//			countrycolor: 'rgb(204,204,204)',
+//			lonaxis: { range: [-180, -120] },
+//			lataxis: { range: [47, 62] }
+//		}
+
+	
 
 	Plotly.newPlot("myDiv", data, layout, {showLink: false});
 

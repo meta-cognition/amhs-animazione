@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <!-- This page was last built at 2021-01-18 15:02 -->
+
+      <meta charset="utf-8">
+
+      <link rel="canonical" href="https://plotly.com/javascript/mapbox-layers/">
+
+      <!-- Media query magic - http://stackoverflow.com/questions/19945658/my-iphone-thinks-its-980px-wide -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script type="text/javascript" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/pd.js"></script><script type="text/javascript" async="" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/lftracker_v1_3P1w24dA6lBamY5n.js"></script><script type="text/javascript" async="" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/insight.js"></script><script type="text/javascript" async="" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/analytics.js"></script><script async="" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/gtm.js"></script><script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/instantsearch.js"></script>
+      <script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/polyfill.js"></script>
+      <link rel="stylesheet" href="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/bootstrap.css" crossorigin="anonymous">
+      <script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/jquery.js"></script>
+      <script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/popper.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/bootstrap.js" crossorigin="anonymous"></script>
+
+      
+      <!-- code highlighting -->
+      <script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/highlight_002.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      
+
+        <!-- Plotly.js -->
+        <script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/plotly-latest.js"></script><style id="plotly.js-style-global"></style>
+
+      
+      <!--
+      //// Stylesheets
+      -->
+
+      <!-- Fonts -->
+      <link href="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/css.css" rel="stylesheet" type="text/css">
+
+      <link rel="stylesheet" href="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/font-awesome.css">
+
+      <!-- Main Stylesheets -->
+      <link rel="stylesheet" type="text/css" href="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/main.css">
+
+      <!-- LOCAL DEV STYLESHEET -->
+      <!--<link rel="stylesheet" type="text/css" href="http://api.plotly.dev/all_static/css/main.css">-->
+
+      <!-- Icon -->
+      <link rel="shortcut icon" href="https://plotly.com/img/favicon.ico">
+
+      <!-- Google Tags-->
+      <!-- Google Tag Manager Tag -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N6T2RXG');</script>
+
+
+
+    <!-- META TAGS -->
+    <!-- SEO Tags - title, meta_description -->
+<title>Mapbox Map Layers |  JavaScript  | Plotly  </title>
+<meta name="description" content="How to make a mapbox maps in JavaScript with various base layers with or without needing a Mapbox access token.">
+
+<!-- Bing tags -->
+    <meta name="msvalidate.01" content="D319859A832F9F1D15A7646E2A42150A">
+<!-- Facebook tags -->
+    <meta property="og:title" content="Mapbox Map Layers">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.plot.ly/plotly-documentation/thumbnail/mapbox-layers.png">
+    <meta property="og:description" content="How to make a mapbox maps in JavaScript with various base layers with or without needing a Mapbox access token.">
+    <meta property="og:url">
+    <meta property="fb:admins" content="1123751525">
+    <meta property="fb:admins" content="22418">
+
+<!-- twitter tags -->
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:title" content="Mapbox Map Layers">
+    <meta name="twitter:url" content="https://plotly.com/javascript/mapbox-layers/">
+    <meta name="twitter:description" content="How to make a mapbox maps in JavaScript with various base layers with or without needing a Mapbox access token.">
+    <meta name="twitter:image" content="https://images.plot.ly/plotly-documentation/thumbnail/mapbox-layers.png">
+    <meta name="twitter:site" content="@plotlygraphs">
+
+
+
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style id="plotly.js-style-modebar-f6c9fa"></style><style id="plotly.js-style-modebar-458cce"></style><style id="plotly.js-style-modebar-e2b920"></style><style id="plotly.js-style-modebar-6a6aa7"></style><script type="application/javascript" async="" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/1772.js"></script><script type="text/javascript" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/analytics_002"></script><script type="text/javascript" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/analytics"></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+
+<body data-spy="scroll" data-target=".watch" style="position:relative;"><div id="MathJax_Message" style="display: none;"></div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+<!--[if lt IE 10]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+	your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="header-container">
+    <div id="campaign-zero-banner">
+        Black Lives Matter. Please consider donating to <a target="_blank" href="https://www.blackgirlscode.com/?utm_source=plotly&amp;utm_medium=graphing&amp;utm_campaign=july">Black Girls Code</a> today.
+    </div>
+    <header class="header-main --default">
+        <div class="--wrap">
+            <div class="--wrap-left">
+                <div class="-identity">
+                    <a href="https://plotly.com/"><img src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/plotly_graphing_libraries_1.png" style="height: 45px;"></a>
+                    <a href="https://plotly.com/graphing-libraries/"><img src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/plotly_graphing_libraries_2.png" style="height: 45px;"></a>
+                    <div class="breadcrumb-nav">
+                        
+                            <a href="https://plotly.com/javascript">JavaScript</a>
+                        
+
+                        
+                        
+
+                        
+                            
+                             &gt;<a href="https://plotly.com/javascript/maps">Maps</a>
+
+                        
+
+                        
+                        &gt;<a href="#">Mapbox Map Layers</a>
+                        
+
+                        
+                    </div>
+                </div>
+
+            </div>
+            <div class="--wrap-right">
+                <nav class="--nav-meta" role="navigation">
+                    <ul>
+                        
+<iframe src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/github-btn.htm" style="padding-top: 5px;" scrolling="0" width="160px" height="40px" frameborder="0"></iframe>
+
+
+                        <li><a href="https://plotly.com/dash/?utm_source=dash_demo&amp;utm_medium=graphing_banner&amp;utm_campaign=plotly_js" data-mode="1" target="_blank" class="typeform-share button --enterprise-quaternary" style="font-family: verdana, tahoma, open sans, sans-serif;">DO MORE WITH DASH</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
+
+
+<main class="--page page--single --index">
+
+	<div class="--wrap">
+		<!-- aside - Main Sidebar-->
+		<aside class="--sidebar-container">
+			<div class="--sidebar-fixed reference affix" data-spy="affix" id="where">
+				
+                        <button id="modal-button" type="button" data-toggle="modal" data-target="#myModal">
+                            <input id="modal-input" style="border-radius: 5px; width: 100%;" type="text" placeholder="   Search..." readonly="readonly">
+                          </button>
+                    
+				<header class="--sidebar-header">On This Page</header>
+				<nav class="--sidebar-body watch" id="where">
+		  <ul class="--sidebar-list"><li class="--sidebar-item"><a href="#how-layers-work-in-mapbox-maps">
+            How Layers work in Mapbox Maps
+          </a></li><li class="--sidebar-item"><a href="#mapbox-access-tokens-and-when-you-need-them">
+            Mapbox Access Tokens and When You Need Them
+          </a></li><li class="--sidebar-item"><a href="#openstreetmap-tiles-no-token-needed">
+            OpenStreetMap tiles no token needed
+          </a></li><li class="--sidebar-item"><a href="#using-layoutmapboxlayers-to-specify-a-base-map">
+            Using layout.mapbox.layers to Specify a Base Map
+          </a></li><li class="--sidebar-item"><a href="#base-tiles-from-the-usgs-no-token-needed">
+            Base Tiles from the USGS no token needed
+          </a></li><li class="--sidebar-item"><a href="#base-tiles-from-the-usgs-radar-overlay-from-environment-canada-no-token-needed">
+            Base Tiles from the USGS radar overlay from Environment Canada no token needed
+          </a></li><li class="--sidebar-item"><a href="#dark-tiles-from-mapbox-service-free-token-needed">
+            Dark tiles from Mapbox service free token needed
+          </a></li></ul>
+
+
+				</nav>
+			</div>
+		</aside>
+		<!-- Main-->
+		<section class="--page-body --tutorial-index --base">
+			<header class="--welcome">
+				<div class="--welcome-body">
+					<!--div.--wrap-inner-->
+					<div class="--title">
+						<div class="--body">
+							<div class="nav-breadcrumb-container">
+    <div></div>
+    <div class="nav-breadcrumb-right">
+        <div class="--fork">
+            
+                
+                <a id="forklink" href="https://github.com/plotly/graphing-library-docs/tree/master/_posts/plotly_js/maps/mapbox-layers/">
+            
+                    <div class="icon">
+                        <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                            <path fill="#000000" d="M2.6,10.59L8.38,4.8L10.07,6.5C9.83,7.35 10.22,8.28 11,8.73V14.27C10.4,14.61 10,15.26 10,16A2,2 0 0,0 12,18A2,2 0 0,0 14,16C14,15.26 13.6,14.61 13,14.27V9.41L15.07,11.5C15,11.65 15,11.82 15,12A2,2 0 0,0 17,14A2,2 0 0,0 19,12A2,2 0 0,0 17,10C16.82,10 16.65,10 16.5,10.07L13.93,7.5C14.19,6.57 13.71,5.55 12.78,5.16C12.35,5 11.9,4.96 11.5,5.07L9.8,3.38L10.59,2.6C11.37,1.81 12.63,1.81 13.41,2.6L21.4,10.59C22.19,11.37 22.19,12.63 21.4,13.41L13.41,21.4C12.63,22.19 11.37,22.19 10.59,21.4L2.6,13.41C1.81,12.63 1.81,11.37 2.6,10.59Z"></path>
+                        </svg>
+                    </div>
+                    <span>Suggest an edit to this page</span>
+                </a>
+        </div>
+    </div>
+
+</div>
+
+							
+							<h1>
+								Mapbox Map Layers
+								
+								in JavaScript
+								
+							</h1>
+							<p>How to make a mapbox maps in JavaScript with various base layers with or without needing a Mapbox access token. </p>
+							<br>
+
+							
+							
+
+
+
+
+
+
+
+<div class="dash-plug">
+    <p>Building AI apps or dashboards with Plotly.js? <a href="https://plotly.com/chart-studio/">Chart Studio</a> enables 1-click export, editing and sharing of Plotly.js charts.
+    If building a full-stack app with Plotly.js, you might save time by building with <a href="https://dash.plotly.com/">Dash</a> instead.
+    <b><a href="https://plotly.com/get-demo/?utm_source=docs&amp;utm_medium=graphing&amp;utm_campaign=nov&amp;utm_content=javascript" class="plotly-red" style="font-weight: bold !important;">Schedule a Dash Enterprise demo.</a></b></p>
+
+    <p style="text-align: center; margin: 5px;"><a href="https://go.plotly.com/dash-azure" class="plotly-red" style="font-weight: bold !important; ">Install Dash Enterprise on Azure</a> | <a href="https://go.plotly.com/dash-aws" class="plotly-red" style="font-weight: bold !important; ">Install Dash Enterprise on AWS</a></p>
+</div>
+<br>
+
+
+
+<details>
+    <summary><span style="cursor: pointer; color: #506784 !important">New to Plotly?</span></summary>
+    
+        <p>Plotly is a <a href="https://plotly.com/javascript/is-plotly-free/">free and open-source</a> graphing library for JavaScript. We recommend you read our <a href="https://plotly.com/javascript/getting-started/">Getting Started guide</a> for the latest installation or upgrade instructions, then move on to our <a href="https://plotly.com/javascript/plotly-fundamentals/">Plotly Fundamentals tutorials</a> or dive straight in to some <a href="https://plotly.com/javascript/basic-charts/">Basic Charts tutorials</a>.</p>
+    
+</details>
+
+
+
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<!-- Start Plotly Basics Section -->
+			<section class="tutorial-content">
+
+				
+
+
+
+
+
+
+				
+
+    <div class="section">
+      <div class="row auto-eg-padding">
+        <div class=" row twelve columns">
+          <h3 id="how-layers-work-in-mapbox-maps">
+            <a class="no_underline plot-blue" href="#how-layers-work-in-mapbox-maps">How Layers work in Mapbox Maps</a>
+          </h3>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            
+              <p>If your figure contains one or more traces of type <code>Scattermapbox</code>, <code>Choroplethmapbox</code> or <code>Densitymapbox</code>, the <code>layout</code>
+ object in your figure contains configuration information for the map 
+itself. The map is composed of various layers, of three different types.
+</p><ol>
+    <li> <code>layout.mapbox.style</code> defines the lowest layers, also known as your "base map"</li>
+    <li> The various traces in <code>data</code> are by default rendered above the base map (although this can be controlled via the <code>below</code> attribute).</li>
+    <li> <code>layout.mapbox.layers</code> is an array that defines more layers that are by default rendered above the traces in <code>data</code> (although this can also be controlled via the <code>below</code> attribute).</li>
+</ol><p></p>
+
+            
+            
+            
+          </div>
+          
+        </div>
+    </div>
+    <div class="section">
+      <div class="row auto-eg-padding">
+        <div class=" row twelve columns">
+          <h3 id="mapbox-access-tokens-and-when-you-need-them">
+            <a class="no_underline plot-blue" href="#mapbox-access-tokens-and-when-you-need-them">Mapbox Access Tokens and When You Need Them</a>
+          </h3>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            
+              <p>The word "mapbox" in the trace names and <code>layout.mapbox</code> refers to the Mapbox GL JS open-source library. If your basemap in <code>layout.mapbox.style</code> uses data from the Mapbox <em>service</em>,
+ then you will need to register for a free account at 
+https://mapbox.com/ and obtain a Mapbox Access token. This token should 
+be provided either in <code>mapboxAccessToken</code>  in <code>setPlotConfig</code> function, or as a variable that would be passed as an argument of <code>newPlot</code>.
+If your <code>layout.mapbox.style</code> does not use data from the Mapbox service, you do <em>not</em> need to register for a Mapbox account.
+</p><h6>Base Maps in <code>layout.mapbox.style</code></h6>
+The accepted values for <code>layout.mapbox.style</code> are one of the following tiles.
+<ol>
+    <li> <code>"white-bg"</code> yields an empty white canvas which results in no external HTTP requests </li>
+    <li> <code>"open-street-map"</code>, <code>"carto-positron"</code>, <code>"carto-darkmatter"</code>, <code>"stamen-terrain"</code>, <code>"stamen-toner"</code> or <code>"stamen-watercolor"</code> yeild maps composed of <em>raster</em> tiles from various public tile servers which do not require signups or access tokens </li>
+    <li> <code>"basic"</code>, <code>"streets"</code>, <code>"outdoors"</code>, <code>"light"</code>, <code>"dark"</code>, <code>"satellite"</code>, or <code>"satellite-streets"</code> yeild maps composed of <em>vector</em> tiles from the Mapbox service, and <em>do</em> require a Mapbox Access Token or an on-premise Mapbox installation. </li>
+    <li> A Mapbox service style URL, which requires a Mapbox Access Token or an on-premise Mapbox installation. </li>
+    <li> A Mapbox Style object as defined at https://docs.mapbox.com/mapbox-gl-js/style-spec/ </li>
+</ol><p></p>
+
+            
+            
+            
+          </div>
+          
+        </div>
+    </div>
+    <div class="section">
+      <div class="row auto-eg-padding">
+        <div class=" row twelve columns">
+          <h3 id="openstreetmap-tiles-no-token-needed">
+            <a class="no_underline plot-blue" href="#openstreetmap-tiles-no-token-needed">OpenStreetMap tiles, no token needed</a>
+          </h3>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            
+              <p>Here is a simple map rendered with "open-street-map" tiles, without needing a Mapbox Access Token.</p>
+
+            
+            
+              <div class="z-depth-1">
+                <pre><code class="plotly_js hljs javascript">Plotly.d3.csv(
+	<span class="hljs-string"><span class="hljs-string">"https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv"</span></span>,
+	<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">err, rows</span></span></span><span class="hljs-function">) </span></span>{
+		<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="hljs-title"><span class="hljs-function"><span class="hljs-title">unpack</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">rows, key</span></span></span><span class="hljs-function">) </span></span>{
+			<span class="hljs-keyword"><span class="hljs-keyword">return</span></span> rows.map(<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">row</span></span></span><span class="hljs-function">) </span></span>{
+				<span class="hljs-keyword"><span class="hljs-keyword">return</span></span> row[key];
+			});
+		}
+
+		<span class="hljs-keyword"><span class="hljs-keyword">var</span></span> data = [
+			{
+				type: <span class="hljs-string"><span class="hljs-string">"scattermapbox"</span></span>,
+				text: unpack(rows, <span class="hljs-string"><span class="hljs-string">"Globvalue"</span></span>),
+				lon: unpack(rows, <span class="hljs-string"><span class="hljs-string">"Lon"</span></span>),
+				lat: unpack(rows, <span class="hljs-string"><span class="hljs-string">"Lat"</span></span>),
+				marker: { color: <span class="hljs-string"><span class="hljs-string">"fuchsia"</span></span>, size: <span class="hljs-number"><span class="hljs-number">4</span></span> }
+			}
+		];
+
+		<span class="hljs-keyword"><span class="hljs-keyword">var</span></span> layout = {
+			dragmode: <span class="hljs-string"><span class="hljs-string">"zoom"</span></span>,
+			mapbox: { style: <span class="hljs-string"><span class="hljs-string">"open-street-map"</span></span>, center: { lat: <span class="hljs-number"><span class="hljs-number">38</span></span>, lon: -<span class="hljs-number"><span class="hljs-number">90</span></span> }, zoom: <span class="hljs-number"><span class="hljs-number">3</span></span> },
+			margin: { r: <span class="hljs-number"><span class="hljs-number">0</span></span>, t: <span class="hljs-number"><span class="hljs-number">0</span></span>, b: <span class="hljs-number"><span class="hljs-number">0</span></span>, l: <span class="hljs-number"><span class="hljs-number">0</span></span> }
+		};
+
+		Plotly.newPlot(<span class="hljs-string"><span class="hljs-string">"myDiv"</span></span>, data, layout);
+	}
+);
+</code></pre>
+              </div>
+            
+            
+          </div>
+          
+            <div class="twelve columns">
+              <form style="margin-bottom: 35px; font-weight: 'Open Sans', sans-serif;" action="https://codepen.io/pen/define" method="POST" target="_blank">
+                <input type="hidden" name="data" value="{&quot;title&quot;:&quot;Plotly.js OpenStreetMap tiles, no token needed&quot;,&quot;html&quot;:&quot;&lt;head&gt;\n\t&lt;!-- Load plotly.js into the DOM --&gt;\n\t&lt;script src='https://cdn.plot.ly/plotly-latest.min.js'&gt;&lt;/script&gt;\n&lt;/head&gt;\n\n&lt;body&gt;\n\t&lt;div id='myDiv'&gt;&lt;!-- Plotly chart will be drawn inside this DIV --&gt;&lt;/div&gt;\n&lt;/body&gt;&quot;,&quot;js&quot;:&quot;Plotly.d3.csv(\n\t\&quot;https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv\&quot;,\n\tfunction(err, rows) {\n\t\tfunction unpack(rows, key) {\n\t\t\treturn rows.map(function(row) {\n\t\t\t\treturn row[key];\n\t\t\t});\n\t\t}\n\n\t\tvar data = [\n\t\t\t{\n\t\t\t\ttype: \&quot;scattermapbox\&quot;,\n\t\t\t\ttext: unpack(rows, \&quot;Globvalue\&quot;),\n\t\t\t\tlon: unpack(rows, \&quot;Lon\&quot;),\n\t\t\t\tlat: unpack(rows, \&quot;Lat\&quot;),\n\t\t\t\tmarker: { color: \&quot;fuchsia\&quot;, size: 4 }\n\t\t\t}\n\t\t];\n\n\t\tvar layout = {\n\t\t\tdragmode: \&quot;zoom\&quot;,\n\t\t\tmapbox: { style: \&quot;open-street-map\&quot;, center: { lat: 38, lon: -90 }, zoom: 3 },\n\t\t\tmargin: { r: 0, t: 0, b: 0, l: 0 }\n\t\t};\n\n\t\tPlotly.newPlot(\&quot;myDiv\&quot;, data, layout);\n\t}\n);\n&quot;}">
+                <input style=" float: right; border-radius: 4px;" class="codepen-submit" type="submit" value="Try It On CodePen!">
+              </form>
+              
+              <div style="max-width: 100%; margin: auto" id="myDiv_3" class="js-plotly-plot"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 450px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><defs id="defs-458cce"><g class="clips"></g><g class="gradients"></g></defs><g class="bglayer"></g><g class="draglayer"></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"></g><g class="polarlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"><canvas class="gl-canvas gl-canvas-context" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-focus" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-pick" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><div id="458cce-mapbox" style="position: absolute; width: 700px; height: 450px; left: 0px; top: 0px;" class="mapboxgl-map"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="840" height="540" style="width: 700px; height: 450px; left: 0px; top: 0px;"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox logo"></a></div></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact"><div class="mapboxgl-ctrl-attrib-inner"><a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a></div></div></div></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><defs id="topdefs-458cce"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="infolayer"><g class="g-gtitle"></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-458cce" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset view" data-attr="reset" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Toggle show closest data on hover" data-attr="hovermode" data-val="null" data-toggle="true" data-gravity="ne"><svg viewBox="0 0 1500 1000" class="icon" height="1em" width="1em"><path d="m375 725l0 0-375-375 375-374 0-1 1125 0 0 750-1125 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs><style>.cls-1 {fill: #3f4f75;} .cls-2 {fill: #80cfbe;} .cls-3 {fill: #fff;}</style></defs><title>plotly-logomark</title><g id="symbol"><rect class="cls-1" width="132" height="132" rx="6" ry="6"></rect><circle class="cls-2" cx="78" cy="54" r="6"></circle><circle class="cls-2" cx="102" cy="30" r="6"></circle><circle class="cls-2" cx="78" cy="30" r="6"></circle><circle class="cls-2" cx="54" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="54" r="6"></circle><path class="cls-3" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path><path class="cls-3" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path><path class="cls-3" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path><path class="cls-3" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path></g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><g class="hoverlayer"></g></svg></div></div></div>
+              <script>
+                Plotly.d3.csv(
+	"https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv",
+	function(err, rows) {
+		function unpack(rows, key) {
+			return rows.map(function(row) {
+				return row[key];
+			});
+		}
+
+		var data = [
+			{
+				type: "scattermapbox",
+				text: unpack(rows, "Globvalue"),
+				lon: unpack(rows, "Lon"),
+				lat: unpack(rows, "Lat"),
+				marker: { color: "fuchsia", size: 4 }
+			}
+		];
+
+		var layout = {
+			dragmode: "zoom",
+			mapbox: { style: "open-street-map", center: { lat: 38, lon: -90 }, zoom: 3 },
+			margin: { r: 0, t: 0, b: 0, l: 0 }
+		};
+
+		Plotly.newPlot("myDiv_3", data, layout);
+	}
+);
+
+              </script>
+            </div>
+          
+        </div>
+    </div>
+    <div class="section">
+      <div class="row auto-eg-padding">
+        <div class=" row twelve columns">
+          <h3 id="using-layoutmapboxlayers-to-specify-a-base-map" layout.mapbox.layers"-to-specify-a-base-map"="">
+            <a class="no_underline plot-blue" href="#using-" layout.mapbox.layers"-to-specify-a-base-map"="">Using "layout.mapbox.layers" to Specify a Base Map</a>
+          </h3>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            
+              <p>If you have access to your own private tile servers, or
+ wish to use a tile server not included in the list above, the 
+recommended approach is to set layout.mapbox.style to "white-bg" and to 
+use layout.mapbox.layers with below to specify a custom base map.
+If you omit the below attribute when using this approach, your data will
+ likely be hidden by fully-opaque raster tiles!</p>
+
+            
+            
+            
+          </div>
+          
+        </div>
+    </div>
+    <div class="section">
+      <div class="row auto-eg-padding">
+        <div class=" row twelve columns">
+          <h3 id="base-tiles-from-the-usgs-no-token-needed">
+            <a class="no_underline plot-blue" href="#base-tiles-from-the-usgs-no-token-needed">Base Tiles from the USGS, no token needed</a>
+          </h3>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            
+              <p>Here is an example of a map which uses a public USGS 
+imagery map, specified in layout.mapbox.layers, and which is rendered 
+below the data layer.</p>
+
+            
+            
+              <div class="z-depth-1">
+                <pre><code class="plotly_js hljs javascript">Plotly.d3.csv(
+	<span class="hljs-string"><span class="hljs-string">"https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv"</span></span>,
+	<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">err, rows</span></span></span><span class="hljs-function">) </span></span>{
+		<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="hljs-title"><span class="hljs-function"><span class="hljs-title">unpack</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">rows, key</span></span></span><span class="hljs-function">) </span></span>{
+			<span class="hljs-keyword"><span class="hljs-keyword">return</span></span> rows.map(<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">row</span></span></span><span class="hljs-function">) </span></span>{
+				<span class="hljs-keyword"><span class="hljs-keyword">return</span></span> row[key];
+			});
+		}
+
+<span class="hljs-keyword"><span class="hljs-keyword">var</span></span> data = [
+	{
+		type: <span class="hljs-string"><span class="hljs-string">"scattermapbox"</span></span>,
+		text: unpack(rows, <span class="hljs-string"><span class="hljs-string">"Globvalue"</span></span>),
+		lon: unpack(rows, <span class="hljs-string"><span class="hljs-string">"Lon"</span></span>),
+		lat: unpack(rows, <span class="hljs-string"><span class="hljs-string">"Lat"</span></span>),
+		marker: { color: <span class="hljs-string"><span class="hljs-string">"fuchsia"</span></span>, size: <span class="hljs-number"><span class="hljs-number">4</span></span> }
+	}
+];
+
+<span class="hljs-keyword"><span class="hljs-keyword">var</span></span> layout = {
+	dragmode: <span class="hljs-string"><span class="hljs-string">"zoom"</span></span>,
+	mapbox: {
+		style: <span class="hljs-string"><span class="hljs-string">"white-bg"</span></span>,
+		layers: [
+			{
+				sourcetype: <span class="hljs-string"><span class="hljs-string">"raster"</span></span>,
+				source: [<span class="hljs-string"><span class="hljs-string">"https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}"</span></span>],
+				below: <span class="hljs-string"><span class="hljs-string">"traces"</span></span>
+			}
+		],
+		center: { lat: <span class="hljs-number"><span class="hljs-number">38</span></span>, lon: -<span class="hljs-number"><span class="hljs-number">90</span></span> },
+		zoom: <span class="hljs-number"><span class="hljs-number">3</span></span>
+	},
+	margin: { r: <span class="hljs-number"><span class="hljs-number">0</span></span>, t: <span class="hljs-number"><span class="hljs-number">0</span></span>, b: <span class="hljs-number"><span class="hljs-number">0</span></span>, l: <span class="hljs-number"><span class="hljs-number">0</span></span> }
+};
+
+Plotly.newPlot(<span class="hljs-string"><span class="hljs-string">"myDiv"</span></span>, data, layout);
+	}
+);
+</code></pre>
+              </div>
+            
+            
+          </div>
+          
+            <div class="twelve columns">
+              <form style="margin-bottom: 35px; font-weight: 'Open Sans', sans-serif;" action="https://codepen.io/pen/define" method="POST" target="_blank">
+                <input type="hidden" name="data" value="{&quot;title&quot;:&quot;Plotly.js Base Tiles from the USGS, no token needed&quot;,&quot;html&quot;:&quot;&lt;head&gt;\n\t&lt;!-- Load plotly.js into the DOM --&gt;\n\t&lt;script src='https://cdn.plot.ly/plotly-latest.min.js'&gt;&lt;/script&gt;\n&lt;/head&gt;\n\n&lt;body&gt;\n\t&lt;div id='myDiv'&gt;&lt;!-- Plotly chart will be drawn inside this DIV --&gt;&lt;/div&gt;\n&lt;/body&gt;&quot;,&quot;js&quot;:&quot;Plotly.d3.csv(\n\t\&quot;https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv\&quot;,\n\tfunction(err, rows) {\n\t\tfunction unpack(rows, key) {\n\t\t\treturn rows.map(function(row) {\n\t\t\t\treturn row[key];\n\t\t\t});\n\t\t}\n\nvar data = [\n\t{\n\t\ttype: \&quot;scattermapbox\&quot;,\n\t\ttext: unpack(rows, \&quot;Globvalue\&quot;),\n\t\tlon: unpack(rows, \&quot;Lon\&quot;),\n\t\tlat: unpack(rows, \&quot;Lat\&quot;),\n\t\tmarker: { color: \&quot;fuchsia\&quot;, size: 4 }\n\t}\n];\n\nvar layout = {\n\tdragmode: \&quot;zoom\&quot;,\n\tmapbox: {\n\t\tstyle: \&quot;white-bg\&quot;,\n\t\tlayers: [\n\t\t\t{\n\t\t\t\tsourcetype: \&quot;raster\&quot;,\n\t\t\t\tsource: [\&quot;https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}\&quot;],\n\t\t\t\tbelow: \&quot;traces\&quot;\n\t\t\t}\n\t\t],\n\t\tcenter: { lat: 38, lon: -90 },\n\t\tzoom: 3\n\t},\n\tmargin: { r: 0, t: 0, b: 0, l: 0 }\n};\n\nPlotly.newPlot(\&quot;myDiv\&quot;, data, layout);\n\t}\n);\n&quot;}">
+                <input style=" float: right; border-radius: 4px;" class="codepen-submit" type="submit" value="Try It On CodePen!">
+              </form>
+              
+              <div style="max-width: 100%; margin: auto" id="myDiv_5" class="js-plotly-plot"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 450px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><defs id="defs-f6c9fa"><g class="clips"></g><g class="gradients"></g></defs><g class="bglayer"></g><g class="draglayer"></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"></g><g class="polarlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"><canvas class="gl-canvas gl-canvas-context" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-focus" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-pick" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><div id="f6c9fa-mapbox" style="position: absolute; width: 700px; height: 450px; left: 0px; top: 0px;" class="mapboxgl-map"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="840" height="540" style="width: 700px; height: 450px; left: 0px; top: 0px;"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox logo"></a></div></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact mapboxgl-attrib-empty"><div class="mapboxgl-ctrl-attrib-inner"></div></div></div></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><defs id="topdefs-f6c9fa"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="infolayer"><g class="g-gtitle"></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-f6c9fa" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset view" data-attr="reset" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Toggle show closest data on hover" data-attr="hovermode" data-val="null" data-toggle="true" data-gravity="ne"><svg viewBox="0 0 1500 1000" class="icon" height="1em" width="1em"><path d="m375 725l0 0-375-375 375-374 0-1 1125 0 0 750-1125 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs><style>.cls-1 {fill: #3f4f75;} .cls-2 {fill: #80cfbe;} .cls-3 {fill: #fff;}</style></defs><title>plotly-logomark</title><g id="symbol"><rect class="cls-1" width="132" height="132" rx="6" ry="6"></rect><circle class="cls-2" cx="78" cy="54" r="6"></circle><circle class="cls-2" cx="102" cy="30" r="6"></circle><circle class="cls-2" cx="78" cy="30" r="6"></circle><circle class="cls-2" cx="54" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="54" r="6"></circle><path class="cls-3" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path><path class="cls-3" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path><path class="cls-3" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path><path class="cls-3" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path></g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><g class="hoverlayer"></g></svg></div></div></div>
+              <script>
+                Plotly.d3.csv(
+	"https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv",
+	function(err, rows) {
+		function unpack(rows, key) {
+			return rows.map(function(row) {
+				return row[key];
+			});
+		}
+
+var data = [
+	{
+		type: "scattermapbox",
+		text: unpack(rows, "Globvalue"),
+		lon: unpack(rows, "Lon"),
+		lat: unpack(rows, "Lat"),
+		marker: { color: "fuchsia", size: 4 }
+	}
+];
+
+var layout = {
+	dragmode: "zoom",
+	mapbox: {
+		style: "white-bg",
+		layers: [
+			{
+				sourcetype: "raster",
+				source: ["https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}"],
+				below: "traces"
+			}
+		],
+		center: { lat: 38, lon: -90 },
+		zoom: 3
+	},
+	margin: { r: 0, t: 0, b: 0, l: 0 }
+};
+
+Plotly.newPlot("myDiv_5", data, layout);
+	}
+);
+
+              </script>
+            </div>
+          
+        </div>
+    </div>
+    <div class="section">
+      <div class="row auto-eg-padding">
+        <div class=" row twelve columns">
+          <h3 id="base-tiles-from-the-usgs-radar-overlay-from-environment-canada-no-token-needed">
+            <a class="no_underline plot-blue" href="#base-tiles-from-the-usgs-radar-overlay-from-environment-canada-no-token-needed">Base Tiles from the USGS, radar overlay from Environment Canada, no token needed</a>
+          </h3>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            
+              <p>Here is the same example, with in addition, a WMS layer
+ from Environment Canada which displays near-real-time radar imagery in 
+partly-transparent raster tiles, rendered above the go.Scattermapbox 
+trace, as is the default.</p>
+
+            
+            
+              <div class="z-depth-1">
+                <pre><code class="plotly_js hljs javascript">Plotly.d3.csv(<span class="hljs-string"><span class="hljs-string">'https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv'</span></span>, <span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">err, rows</span></span></span><span class="hljs-function">)</span></span>{
+      <span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="hljs-title"><span class="hljs-function"><span class="hljs-title">unpack</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">rows, key</span></span></span><span class="hljs-function">) </span></span>{
+          <span class="hljs-keyword"><span class="hljs-keyword">return</span></span> rows.map(<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">row</span></span></span><span class="hljs-function">) </span></span>{ <span class="hljs-keyword"><span class="hljs-keyword">return</span></span> row[key]; });
+		}
+
+<span class="hljs-keyword"><span class="hljs-keyword">var</span></span> data = [{
+        type: <span class="hljs-string"><span class="hljs-string">'scattermapbox'</span></span>, text: unpack(rows, <span class="hljs-string"><span class="hljs-string">'Globvalue'</span></span>),
+        lon: unpack(rows, <span class="hljs-string"><span class="hljs-string">'Lon'</span></span>), lat: unpack(rows, <span class="hljs-string"><span class="hljs-string">'Lat'</span></span>),
+        marker: {color: <span class="hljs-string"><span class="hljs-string">'fuchsia'</span></span>, size: <span class="hljs-number"><span class="hljs-number">4</span></span>}
+    }];
+
+<span class="hljs-keyword"><span class="hljs-keyword">var</span></span> layout = {
+	dragmode: <span class="hljs-string"><span class="hljs-string">'zoom'</span></span>,
+	mapbox: {
+		style: <span class="hljs-string"><span class="hljs-string">'white-bg'</span></span>,
+		layers: [
+			{
+            <span class="hljs-string"><span class="hljs-string">"below"</span></span>: <span class="hljs-string"><span class="hljs-string">'traces'</span></span>,
+            <span class="hljs-string"><span class="hljs-string">"sourcetype"</span></span>: <span class="hljs-string"><span class="hljs-string">"raster"</span></span>,
+            <span class="hljs-string"><span class="hljs-string">"source"</span></span>: [
+                <span class="hljs-string"><span class="hljs-string">"https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}"</span></span>
+            ]
+        },
+			{
+             sourcetype: <span class="hljs-string"><span class="hljs-string">"raster"</span></span>,
+			 source: [<span class="hljs-string"><span class="hljs-string">"https://geo.weather.gc.ca/geomet/?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;BBOX={bbox-epsg-3857}&amp;CRS=EPSG:3857&amp;WIDTH=1000&amp;HEIGHT=1000&amp;LAYERS=RADAR_1KM_RDBR&amp;TILED=true&amp;FORMAT=image/png"</span></span>]}],
+		below: <span class="hljs-string"><span class="hljs-string">'traces'</span></span>,
+		center: {lat: <span class="hljs-number"><span class="hljs-number">38</span></span>, lon: -<span class="hljs-number"><span class="hljs-number">90</span></span>}, zoom: <span class="hljs-number"><span class="hljs-number">4</span></span>},
+	margin: {r: <span class="hljs-number"><span class="hljs-number">0</span></span>, t: <span class="hljs-number"><span class="hljs-number">0</span></span>, b: <span class="hljs-number"><span class="hljs-number">0</span></span>, l: <span class="hljs-number"><span class="hljs-number">0</span></span>},
+	showlegend: <span class="hljs-literal"><span class="hljs-literal">false</span></span>};
+
+Plotly.newPlot(<span class="hljs-string"><span class="hljs-string">'myDiv'</span></span>, data, layout);
+  });</code></pre>
+              </div>
+            
+            
+          </div>
+          
+            <div class="twelve columns">
+              <form style="margin-bottom: 35px; font-weight: 'Open Sans', sans-serif;" action="https://codepen.io/pen/define" method="POST" target="_blank">
+                <input type="hidden" name="data" value="{&quot;title&quot;:&quot;Plotly.js Base Tiles from the USGS, radar overlay from Environment Canada, no token needed&quot;,&quot;html&quot;:&quot;&lt;head&gt;\n\t&lt;!-- Load plotly.js into the DOM --&gt;\n\t&lt;script src='https://cdn.plot.ly/plotly-latest.min.js'&gt;&lt;/script&gt;\n&lt;/head&gt;\n\n&lt;body&gt;\n\t&lt;div id='myDiv'&gt;&lt;!-- Plotly chart will be drawn inside this DIV --&gt;&lt;/div&gt;\n&lt;/body&gt;&quot;,&quot;js&quot;:&quot;Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv', function(err, rows){\n      function unpack(rows, key) {\n          return rows.map(function(row) { return row[key]; });\n\t\t}\n\nvar data = [{\n        type: 'scattermapbox', text: unpack(rows, 'Globvalue'),\n        lon: unpack(rows, 'Lon'), lat: unpack(rows, 'Lat'),\n        marker: {color: 'fuchsia', size: 4}\n    }];\n\nvar layout = {\n\tdragmode: 'zoom',\n\tmapbox: {\n\t\tstyle: 'white-bg',\n\t\tlayers: [\n\t\t\t{\n            \&quot;below\&quot;: 'traces',\n            \&quot;sourcetype\&quot;: \&quot;raster\&quot;,\n            \&quot;source\&quot;: [\n                \&quot;https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}\&quot;\n            ]\n        },\n\t\t\t{\n             sourcetype: \&quot;raster\&quot;,\n\t\t\t source: [\&quot;https://geo.weather.gc.ca/geomet/?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;BBOX={bbox-epsg-3857}&amp;CRS=EPSG:3857&amp;WIDTH=1000&amp;HEIGHT=1000&amp;LAYERS=RADAR_1KM_RDBR&amp;TILED=true&amp;FORMAT=image/png\&quot;]}],\n\t\tbelow: 'traces',\n\t\tcenter: {lat: 38, lon: -90}, zoom: 4},\n\tmargin: {r: 0, t: 0, b: 0, l: 0},\n\tshowlegend: false};\n\nPlotly.newPlot('myDiv', data, layout);\n  });&quot;}">
+                <input style=" float: right; border-radius: 4px;" class="codepen-submit" type="submit" value="Try It On CodePen!">
+              </form>
+              
+              <div style="max-width: 100%; margin: auto" id="myDiv_6" class="js-plotly-plot"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 450px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><defs id="defs-e2b920"><g class="clips"></g><g class="gradients"></g></defs><g class="bglayer"></g><g class="draglayer"></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"></g><g class="polarlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"><canvas class="gl-canvas gl-canvas-context" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-focus" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-pick" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><div id="e2b920-mapbox" style="position: absolute; width: 700px; height: 450px; left: 0px; top: 0px;" class="mapboxgl-map"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="840" height="540" style="width: 700px; height: 450px; left: 0px; top: 0px;"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox logo"></a></div></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact mapboxgl-attrib-empty"><div class="mapboxgl-ctrl-attrib-inner"></div></div></div></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><defs id="topdefs-e2b920"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="infolayer"><g class="g-gtitle"></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-e2b920" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset view" data-attr="reset" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Toggle show closest data on hover" data-attr="hovermode" data-val="null" data-toggle="true" data-gravity="ne"><svg viewBox="0 0 1500 1000" class="icon" height="1em" width="1em"><path d="m375 725l0 0-375-375 375-374 0-1 1125 0 0 750-1125 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs><style>.cls-1 {fill: #3f4f75;} .cls-2 {fill: #80cfbe;} .cls-3 {fill: #fff;}</style></defs><title>plotly-logomark</title><g id="symbol"><rect class="cls-1" width="132" height="132" rx="6" ry="6"></rect><circle class="cls-2" cx="78" cy="54" r="6"></circle><circle class="cls-2" cx="102" cy="30" r="6"></circle><circle class="cls-2" cx="78" cy="30" r="6"></circle><circle class="cls-2" cx="54" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="54" r="6"></circle><path class="cls-3" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path><path class="cls-3" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path><path class="cls-3" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path><path class="cls-3" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path></g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><g class="hoverlayer"></g></svg></div></div></div>
+              <script>
+                Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv', function(err, rows){
+      function unpack(rows, key) {
+          return rows.map(function(row) { return row[key]; });
+		}
+
+var data = [{
+        type: 'scattermapbox', text: unpack(rows, 'Globvalue'),
+        lon: unpack(rows, 'Lon'), lat: unpack(rows, 'Lat'),
+        marker: {color: 'fuchsia', size: 4}
+    }];
+
+var layout = {
+	dragmode: 'zoom',
+	mapbox: {
+		style: 'white-bg',
+		layers: [
+			{
+            "below": 'traces',
+            "sourcetype": "raster",
+            "source": [
+                "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}"
+            ]
+        },
+			{
+             sourcetype: "raster",
+			 source: ["https://geo.weather.gc.ca/geomet/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX={bbox-epsg-3857}&CRS=EPSG:3857&WIDTH=1000&HEIGHT=1000&LAYERS=RADAR_1KM_RDBR&TILED=true&FORMAT=image/png"]}],
+		below: 'traces',
+		center: {lat: 38, lon: -90}, zoom: 4},
+	margin: {r: 0, t: 0, b: 0, l: 0},
+	showlegend: false};
+
+Plotly.newPlot('myDiv_6', data, layout);
+  });
+              </script>
+            </div>
+          
+        </div>
+    </div>
+    <div class="section">
+      <div class="row auto-eg-padding">
+        <div class=" row twelve columns">
+          <h3 id="dark-tiles-from-mapbox-service-free-token-needed">
+            <a class="no_underline plot-blue" href="#dark-tiles-from-mapbox-service-free-token-needed">Dark tiles from Mapbox service, free token needed</a>
+          </h3>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            
+              <p>Here is a map rendered with the "dark" style from the Mapbox service, which requires an Access Token.</p>
+
+            
+            
+              <div class="z-depth-1">
+                <pre><code class="plotly_js hljs php"><span class="hljs-keyword"><span class="hljs-keyword">var</span></span> url = <span class="hljs-string"><span class="hljs-string">"https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson"</span></span>;
+
+Plotly.d3.json(url, (err, raw) =&gt; {
+  <span class="hljs-keyword"><span class="hljs-keyword">var</span></span> lon = raw.features.map(f =&gt; f.geometry.coordinates[<span class="hljs-number"><span class="hljs-number">0</span></span>]);
+  <span class="hljs-keyword"><span class="hljs-keyword">var</span></span> lat = raw.features.map(f =&gt; f.geometry.coordinates[<span class="hljs-number"><span class="hljs-number">1</span></span>]);
+  <span class="hljs-keyword"><span class="hljs-keyword">var</span></span> z = raw.features.map(f =&gt; f.properties.mag);
+
+  <span class="hljs-keyword"><span class="hljs-keyword">var</span></span> data = [
+    { type: <span class="hljs-string"><span class="hljs-string">"scattermapbox"</span></span>, lon: lon, lat: lat, z: z, hoverinfo: <span class="hljs-string"><span class="hljs-string">"y"</span></span> }
+  ];
+
+  <span class="hljs-keyword"><span class="hljs-keyword">var</span></span> layout = {
+    mapbox: { style: <span class="hljs-string"><span class="hljs-string">"dark"</span></span>, zoom: <span class="hljs-number"><span class="hljs-number">2</span></span>, center: { lon: -<span class="hljs-number"><span class="hljs-number">150</span></span>, lat: <span class="hljs-number"><span class="hljs-number">60</span></span> } },
+    margin: { t: <span class="hljs-number"><span class="hljs-number">0</span></span>, b: <span class="hljs-number"><span class="hljs-number">0</span></span> }
+  };
+
+  <span class="hljs-keyword"><span class="hljs-keyword">var</span></span> config = {
+    mapboxAccessToken: <span class="hljs-string"><span class="hljs-string">"your access token"</span></span>
+  };
+
+  Plotly.newPlot(<span class="hljs-string"><span class="hljs-string">'myDiv'</span></span>, data, layout, config);
+});
+</code></pre>
+              </div>
+            
+            
+          </div>
+          
+            <div class="twelve columns">
+              <form style="margin-bottom: 35px; font-weight: 'Open Sans', sans-serif;" action="https://codepen.io/pen/define" method="POST" target="_blank">
+                <input type="hidden" name="data" value="{&quot;title&quot;:&quot;Plotly.js Dark tiles from Mapbox service, free token needed&quot;,&quot;html&quot;:&quot;&lt;head&gt;\n\t&lt;!-- Load plotly.js into the DOM --&gt;\n\t&lt;script src='https://cdn.plot.ly/plotly-latest.min.js'&gt;&lt;/script&gt;\n&lt;/head&gt;\n\n&lt;body&gt;\n\t&lt;div id='myDiv'&gt;&lt;!-- Plotly chart will be drawn inside this DIV --&gt;&lt;/div&gt;\n&lt;/body&gt;&quot;,&quot;js&quot;:&quot;var url = \&quot;https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson\&quot;;\n\nPlotly.d3.json(url, (err, raw) =&gt; {\n  var lon = raw.features.map(f =&gt; f.geometry.coordinates[0]);\n  var lat = raw.features.map(f =&gt; f.geometry.coordinates[1]);\n  var z = raw.features.map(f =&gt; f.properties.mag);\n\n  var data = [\n    { type: \&quot;scattermapbox\&quot;, lon: lon, lat: lat, z: z, hoverinfo: \&quot;y\&quot; }\n  ];\n\n  var layout = {\n    mapbox: { style: \&quot;dark\&quot;, zoom: 2, center: { lon: -150, lat: 60 } },\n    margin: { t: 0, b: 0 }\n  };\n\n  var config = {\n    mapboxAccessToken: \&quot;your access token\&quot;\n  };\n\n  Plotly.newPlot('myDiv', data, layout, config);\n});\n&quot;}">
+                <input style=" float: right; border-radius: 4px;" class="codepen-submit" type="submit" value="Try It On CodePen!">
+              </form>
+              
+              <div style="max-width: 100%; margin: auto" id="myDiv_7" class="js-plotly-plot"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 700px; height: 450px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><defs id="defs-6a6aa7"><g class="clips"></g><g class="gradients"></g></defs><g class="bglayer"></g><g class="draglayer"></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"></g><g class="polarlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"><canvas class="gl-canvas gl-canvas-context" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-focus" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><canvas class="gl-canvas gl-canvas-pick" style="position: absolute; top: 0px; left: 0px; overflow: visible; pointer-events: none;" width="700" height="450"></canvas><div id="6a6aa7-mapbox" style="position: absolute; width: 540px; height: 450px; left: 80px; top: 0px;" class="mapboxgl-map"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="648" height="540" style="width: 540px; height: 450px; left: 0px; top: 0px;"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: block;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox logo"></a></div></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact"><div class="mapboxgl-ctrl-attrib-inner"><a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://apps.mapbox.com/feedback/?owner=mapbox&amp;id=dark-v9&amp;access_token=pk.eyJ1IjoicGxvdGx5LWRvY3MiLCJhIjoiY2s1MnNtODFwMDE4YjNscG5oYWNydXFxYSJ9.AquTxb6AI-oo7TWt01YQ9Q" target="_blank" rel="noopener nofollow">Improve this map</a></div></div></div></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><defs id="topdefs-6a6aa7"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="infolayer"><g class="g-gtitle"></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-6a6aa7" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset view" data-attr="reset" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Toggle show closest data on hover" data-attr="hovermode" data-val="null" data-toggle="true" data-gravity="ne"><svg viewBox="0 0 1500 1000" class="icon" height="1em" width="1em"><path d="m375 725l0 0-375-375 375-374 0-1 1125 0 0 750-1125 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs><style>.cls-1 {fill: #3f4f75;} .cls-2 {fill: #80cfbe;} .cls-3 {fill: #fff;}</style></defs><title>plotly-logomark</title><g id="symbol"><rect class="cls-1" width="132" height="132" rx="6" ry="6"></rect><circle class="cls-2" cx="78" cy="54" r="6"></circle><circle class="cls-2" cx="102" cy="30" r="6"></circle><circle class="cls-2" cx="78" cy="30" r="6"></circle><circle class="cls-2" cx="54" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="30" r="6"></circle><circle class="cls-2" cx="30" cy="54" r="6"></circle><path class="cls-3" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path><path class="cls-3" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path><path class="cls-3" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path><path class="cls-3" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path></g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="700" height="450"><g class="hoverlayer"></g></svg></div></div></div>
+              <script>
+                var url = "https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson";
+
+Plotly.d3.json(url, (err, raw) => {
+  var lon = raw.features.map(f => f.geometry.coordinates[0]);
+  var lat = raw.features.map(f => f.geometry.coordinates[1]);
+  var z = raw.features.map(f => f.properties.mag);
+
+  var data = [
+    { type: "scattermapbox", lon: lon, lat: lat, z: z, hoverinfo: "y" }
+  ];
+
+  var layout = {
+    mapbox: { style: "dark", zoom: 2, center: { lon: -150, lat: 60 } },
+    margin: { t: 0, b: 0 }
+  };
+
+  var config = {
+    mapboxAccessToken: "pk.eyJ1IjoicGxvdGx5LWRvY3MiLCJhIjoiY2s1MnNtODFwMDE4YjNscG5oYWNydXFxYSJ9.AquTxb6AI-oo7TWt01YQ9Q"
+  };
+
+  Plotly.newPlot('myDiv_7', data, layout, config);
+});
+
+              </script>
+            </div>
+          
+        </div>
+    </div>
+				
+			</div></div></div></div></div></div></div></section>
+
+			
+
+			<a href="https://dash.plotly.com/"><img style="margin-top: 20px;" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/dash.png" width="100%"></a>
+
+			
+			<!--End Plotly Basics Section-->
+		</section>
+	</div>
+</main>
+
+
+<script>
+
+    var array = [];
+
+    $('.tutorial-content :header:not(h6)').each(function (i, e) {
+        var item = $(e);
+        var itemText = item.text();
+        var hash = itemText.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-').replace(/^-+|-+$/g, '').toLowerCase();
+        item.attr("id", hash);
+        array.push({text: itemText, tag: item.prop("tagName"), hash: hash});
+    });
+
+    $(".--sidebar-list").html(array.map(function(entry) {
+        var text = entry.text.replace(/[^a-z0-9\s\.:\-\?\!\(\))]/gi, '');
+        if(entry.tag.toLowerCase() < "h4"){
+            return('<li class="--sidebar-item"><a href="#' + entry.hash + '">' + text + '</a></li>');
+        }
+        else {
+            return('<li class="--sidebar-item"><a href="#' + entry.hash + '">' + text + '</a></li>');
+        }
+    }).join(""));
+
+
+    //$(".tutorial-content :header:not(h6)").append( "\<div class=\"icon copy\" data-tooltip=\"Click to copy direct link\"><svg style=\"width:24px;height:24px\" viewBox=\"0 0 24 24\"><path fill=\"#000000\" d=\"M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z\"/> </svg> </div>");
+
+</script>
+
+
+<footer class="--footer-main">
+        <section class="--footer-top">
+            <div class="--wrap">
+                <ul class="--footer-body">
+                    <li class="--footer-column">
+                        <h6 style="color:#e763fa" class="--footer-heading">Products</h6>			
+                        <ul>
+                            <li><a href="https://plotly.com/dash/" target="_self">Dash</a></li>
+                            				
+                            				
+                            <li><a href="https://plotly.com/consulting-and-oem/" target="_self">Consulting and Training</a></li>
+                        </ul>
+                    </li>
+                    		
+                    <li class="--footer-column">
+                        <h6 style="color:#636efa" class="--footer-heading">Pricing</h6>			
+                        <ul>
+                            <li><a href="https://plotly.com/get-pricing/" target="_self">Enterprise Pricing</a></li>
+                            				
+                        </ul>
+                    </li>
+                    		
+                    <li class="--footer-column">
+                        <h6 style="color:#00cc96" class="--footer-heading">About Us</h6>			
+                        <ul>
+                            <li><a href="https://plotly.com/company/careers" target="_self">Careers</a></li>
+                            				
+                            <li><a href="https://plotly.com/resources/" target="_self">Resources</a></li>
+                            				
+                            <li><a href="https://medium.com/@plotlygraphs" target="_self">Blog</a></li>
+                            				
+                        </ul>
+                    </li>
+                    		
+                    <li class="--footer-column">
+                        <h6 style="color:#EF553B" class="--footer-heading">Support</h6>			
+                        <ul>
+                            <li><a href="https://community.plot.ly/" target="_self">Community Support</a></li>
+                            				
+                            <li><a href="https://plotly.com/graphing-libraries" target="_self">Documentation</a></li>
+                            				
+                        </ul>
+                    </li>
+                    		
+                    <li class="--footer-column">
+                        <h6 style="color:#119dff" class="--footer-heading">JOIN OUR MAILING LIST</h6>			
+                        <ul>
+                            				
+                            <li>
+                              <p class="subscribe-text"> Sign up to stay in the loop with all things Plotly — from Dash Club to product updates, webinars, and more!</p>
+                              <a href="https://go.plot.ly/subscription" class="subscribe-button" target="_blank">
+                                Subscribe
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="--footer-meta">
+            <div class="--wrap">
+                <div class="left">
+                    <article class="--copyright">Copyright © 2021 Plotly. All rights reserved.</article>
+                </div>
+                <div class="right">
+                    <article class="--tos"><a href="https://plotly.com/terms-of-service/" target="_blank">Terms of Service</a>
+                    </article>
+                    <article class="--privacy"><a href="https://plotly.com/privacy/" target="_blank">Privacy Policy</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});</script>
+<script type="text/javascript" src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/MathJax.js"></script>
+
+ 
+ <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <span style="float: left; padding-top:13px; padding-right:10px;"><i class="fa fa-search fa-lg"></i></span>
+        <div class="ais-search-box"><div class="ais-search-box"><input id="search-input" class="search-input ais-search-box--input" type="text" placeholder="" autocapitalize="none" autocomplete="off" autocorrect="off" role="textbox" spellcheck="false"></div></div>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <div id="search-results" class="search-results">
+          <div id="primary-search-results" class="primary-search-results"></div>
+          <div id="schema-search-results" class="schema-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	window.plotly_doc_language = "plotly_js";
+</script>
+<!-- ALGOLIA SEARCH -->
+
+<script>
+  window.ALGOLIA_CONFIG = {
+    'applicationId': '7EK9KHJW8M',
+    'indexName': 'js_docs',
+    'apiKey': '4dae07ded6a721de73bde7356eec9280',
+    'baseurl': '/'
+  }
+</script>
+
+<script id="algolia__template" type="text/template">
+  
+    <div class="algolia__result">
+      <a class="algolia__result-link" onClick="$('#myModal').modal('toggle')" href="/{{ permalink }}">{{{ _highlightResult.name.value }}}</a>
+      <div class="algolia__result-text">{{{ _highlightResult.description.value }}}</div>
+    </div>
+  
+</script>
+<script id="algolia__secondary-template" type="text/template">
+  
+    <div class="algolia__secondary-result">
+      <a class="algolia__result-link" onClick="$('#myModal').modal('toggle')" href="/{{ permalink }}">{{{ _highlightResult.name.value }}}</a>
+      <div class="algolia__result-text">{{{ _highlightResult.description.value }}}</div>
+    </div>
+  
+</script>
+<script id="algolia__template--no-results" type="text/template">No results found.</script>
+<script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/hogan.js"></script>
+<script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/algolia.js"></script>
+
+ <!-- Hash offset Script -->
+<script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/hash_offset.js"></script>
+ <!-- Image Hover Script -->
+<script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/imghover.js"></script>
+ 
+<!-- code highlighting -->
+<script src="Mapbox%20Map%20Layers%20JavaScript%20Plotly_files/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<svg id="js-plotly-tester" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="position: absolute; left: -10000px; top: -10000px; width: 9000px; height: 9000px; z-index: 1;"><path class="js-reference-point" d="M0,0H1V1H0Z" style="stroke-width: 0px; fill: black;"></path></svg><script type="text/javascript" id="">piAId="720653";piCId="2996";piHostname="pi.pardot.com";(function(){function a(){var b=document.createElement("script");b.type="text/javascript";b.src=("https:"==document.location.protocol?"https://pi":"http://cdn")+".pardot.com/pd.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)}window.attachEvent?window.attachEvent("onload",a):window.addEventListener("load",a,!1)})();</script><script type="text/javascript" id="">(function(d,e,f,b,c,a){c="";b="https://tracking.g2crowd.com/attribution_tracking/conversions/"+d+".js?p\x3d"+encodeURI(e)+"\x26e\x3d"+c;a=document.createElement("script");a.type="application/javascript";a.async=!0;a.src=b;f.getElementsByTagName("head")[0].appendChild(a)})("1772",document.location.href,document);</script></body></html>
