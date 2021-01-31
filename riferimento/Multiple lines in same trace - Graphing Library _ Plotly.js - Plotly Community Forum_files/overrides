@@ -1,0 +1,2 @@
+I18n._mfOverrides = {};
+I18n._overrides = {"js.login.email_placeholder":"forum email or username","js.create_account.title":"Create New Plotly Forum Account","js.create_account.disclaimer":"By registering for a Plotly forum account, you agree to the \u003ca href='{{privacy_link}}'\u003eprivacy policy\u003c/a\u003e and \u003ca href='{{tos_link}}'\u003eterms of service\u003c/a\u003e.","js.login.title":"Log In to Plotly's Forum"};
