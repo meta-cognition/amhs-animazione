@@ -1,0 +1,191 @@
+<html>
+<head>
+	
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+	<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.full-height {
+  height: 100%;
+  background: yellow;
+}
+</style>
+</head>
+
+<body>
+	<div class="full-height" id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+	<script>
+Plotly.d3.csv('https://raw.githubusercontent.com/meta-cognition/amhs-animazione/main/csv/porti.csv', function(err, rows){
+      function unpack(rows, key) {
+          return rows.map(function(row) { return row[key]; });
+      }
+
+
+    var trace_porti = [{
+        type: 'scattermapbox',
+        mode: 'markers+text',
+        ids: unpack(rows, 'abbreviazione'),
+		text: unpack(rows, 'abbreviazione'),
+		textposition: "top center",
+		hovertext: unpack(rows, 'combinato'),
+        lon: unpack(rows, 'longitudine'),
+        lat: unpack(rows, 'latitudine'),
+        marker: {
+          color: "red",
+          opacity: 1,
+          size: 5,
+         
+        }
+        /*name: 'NA Precipitation'*/
+    }];
+  });
+/*======================================*/
+
+	Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminder_with_codes.csv", function(err, rows){
+
+	function filter_and_unpack(rows, key, punto) {
+	return rows.filter(row => row['punto'] == punto).map(row => row[key])
+  }
+
+	var frames = []
+	var slider_steps = []
+
+  var n = 255;
+  var num = 1;
+  for (var i = 0; i <= n; i++) {
+  
+    var puntoLatitudine = filter_and_unpack(rows, 'latitudine', num);
+	var puntoLongitudine = filter_and_unpack(rows, 'longitudine', num);
+	
+			
+    frames[i] = {data: [{lon: puntoLongitudine, lat: puntoLatitudine}], mode: 'lines', name: num}
+    slider_steps.push ({
+        label: num.toString(),
+        method: "animate",
+        args: [[num], {
+            mode: "immediate",
+            transition: {duration: 300},
+            frame: {duration: 300}
+          }
+        ]
+      })
+    num = num + 5
+  }
+
+var data = [{
+
+      lon: frames[0].data[0].lon,
+      lat: frames[0].data[0].lat,
+      text: frames[0].data[0].locations,
+
+}];
+var layout = {
+    title: 'World Life Expectency<br>1952 - 2007',
+ dragmode: 'zoom',
+      mapbox: {
+        center: {
+          lat: 55,
+          lon: -150
+        },
+        domain: {
+          x: [0, 1],
+          y: [0, 1]
+        },
+        style: 'light',
+        zoom: 3
+      },
+      margin: {
+        r: 0,
+        t: 0,
+        b: 0,
+        l: 0,
+        pad: 0
+      },
+      showlegend: false,
+    updatemenus: [{
+      x: 0.1,
+      y: 0,
+      yanchor: "top",
+      xanchor: "right",
+      showactive: false,
+      direction: "left",
+      type: "buttons",
+      pad: {"t": 87, "r": 10},
+      buttons: [{
+        method: "animate",
+        args: [null, {
+          fromcurrent: true,
+          transition: {
+            duration: 200,
+          },
+          frame: {
+            duration: 500
+          }
+        }],
+        label: "Play"
+      }, {
+        method: "animate",
+        args: [
+          [null],
+          {
+            mode: "immediate",
+            transition: {
+              duration: 0
+            },
+            frame: {
+              duration: 0
+            }
+          }
+        ],
+        label: "Pause"
+      }]
+    }],
+    sliders: [{
+      active: 0,
+      steps: slider_steps,
+      x: 0.1,
+      len: 0.9,
+      xanchor: "left",
+      y: 0,
+      yanchor: "top",
+      pad: {t: 50, b: 10},
+      currentvalue: {
+        visible: true,
+        prefix: "Year:",
+        xanchor: "right",
+        font: {
+          size: 20,
+          color: "#666"
+        }
+      },
+      transition: {
+        duration: 300,
+        easing: "cubic-in-out"
+      }
+    }]
+};
+  Plotly.setPlotConfig({
+    mapboxAccessToken: "pk.eyJ1IjoiZG9tcGFubm9uZSIsImEiOiJja2tra3JxNWsxdWllMzBwZWExOWsyZGZjIn0.XQopGOyonxeWiAMEs6TxOg"
+  });
+Plotly.newPlot('myDiv', data, layout).then(function() {
+    Plotly.addFrames('myDiv', frames);
+  });
+})
+
+/*======================================*/
+
+
+
+
+
+
+</script>
+
+	
+</body>
+
+</html>

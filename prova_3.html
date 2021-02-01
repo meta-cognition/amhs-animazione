@@ -1,0 +1,78 @@
+<html>
+<head>
+	
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+	<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.full-height {
+  height: 100%;
+  background: yellow;
+}
+</style>
+</head>
+
+<body>
+<div class="full-height" id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+	Plotly.d3.csv('https://raw.githubusercontent.com/meta-cognition/amhs-animazione/main/csv/porti.csv', function(err, rows){
+		function unpack(rows, key) {
+			return rows.map(function(row) { return row[key]; });
+		}
+		
+		var trace_porti = {
+			type: 'scattermapbox',
+			mode: 'markers+text',
+			ids: unpack(rows, 'abbreviazione'),
+			text: unpack(rows, 'abbreviazione'),
+			textposition: "top center",
+			hovertext: unpack(rows, 'combinato'),
+			lon: unpack(rows, 'longitudine'),
+			lat: unpack(rows, 'latitudine'),
+			marker: {
+				color: "red",
+				opacity: 1,
+				size: 5,
+			}
+			/*name: 'NA Precipitation'*/
+		};
+		
+		layout = {
+			dragmode: 'zoom',
+			mapbox: {
+				center: {
+					lat: 55,
+					lon: -150
+				},
+				domain: {
+					x: [0, 1],
+					y: [0, 1]
+				},
+				style: 'light',
+				zoom: 3
+			},
+			margin: {
+				r: 0,
+				t: 0,
+				b: 0,
+				l: 0,
+				pad: 0
+			},
+			showlegend: false
+		};
+		
+		Plotly.setPlotConfig({
+			mapboxAccessToken: "pk.eyJ1IjoiZG9tcGFubm9uZSIsImEiOiJja2tra3JxNWsxdWllMzBwZWExOWsyZGZjIn0.XQopGOyonxeWiAMEs6TxOg"
+		});
+		
+		data = [trace_porti];
+		
+		Plotly.newPlot('myDiv', data, layout);
+	});
+</script>
+</body>
+</html>
